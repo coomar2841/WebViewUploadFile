@@ -1,0 +1,29 @@
+<html>
+<body>
+<div>
+    <div>
+        <img src="" id="image" width="100%" height="200px"/>
+    </div>
+    <div>
+        <input type="file" id="file"/>
+    </div>
+</div>
+<script type="text/javascript">
+    console.log('Hello');
+    (function(){
+        document.getElementById("file").addEventListener("change", function(e){
+            reader = new FileReader(), img = new Image();
+            reader.onload = function(event){
+                console.log('Success');
+                document.getElementById("image").src = event.target.result;
+            }
+            reader.onerror = function(error){
+                console.log(error);
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        })
+    })();
+
+</script>
+</body>
+</html>
